@@ -1,6 +1,7 @@
 import re
 from email_validator import validate_email, EmailNotValidError
 import dns.resolver
+from core.common_email_typos import COMMON_DOMAIN_TYPOS
 
 class EmailValidator:
     """
@@ -8,17 +9,7 @@ class EmailValidator:
     """
     
     def __init__(self):
-        self.common_domain_typos = {
-            'gmial.com': 'gmail.com',
-            'gmai.com': 'gmail.com',
-            'gmil.com': 'gmail.com',
-            'yahooo.com': 'yahoo.com',
-            'yaho.com': 'yahoo.com',
-            'hotmial.com': 'hotmail.com',
-            'hotmil.com': 'hotmail.com',
-            'outlok.com': 'outlook.com',
-            'outloo.com': 'outlook.com',
-        }
+        self.common_domain_typos = COMMON_DOMAIN_TYPOS
     
     def validate_and_correct(self, email):
         """
